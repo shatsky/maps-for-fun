@@ -1,0 +1,10 @@
+1. Import buildings from OSM: QuickOSM plugin has to be installed; Vector -> QuickOSM -> QuickOSM; Key: 'building'; Value: Query on all values; In: <city name or relation ID, use 'query features' in OSM to find one>
+2. Post-import cleanup: in "Layers" frame, unselect unneeded layers (some invalid non-closed-line buildings and gates can be loaded during import)
+3. Make layer permanent: in "Layers" frame, context menu of buildings layer, "Make permanent" (or it will be lost when qgis will be closed, even if project will be saved)
+4. Add feature attribute field: in "Layers" frame, context menu of buildings layer, "Open attributes table"; un upper button bar enable "Toggle editing mode" and press "New field"; add at least field for year attribute
+5. Fill attributes: I do this via Python scripts using my db which I fill using other Python scripts; "Plugins -> Python console" for executing scripts within QGIS; see scripts in this repo for reference
+6. Colorize based on year attribute value: open buildings layer properties; "Symbology"; switch to "Graduated" (upper dropdown); Value: "year"; edit color ramp; input Classes value (e. g. 256); "Classify"
+7. Set color for buildings that have no year attribute value (by default they are invisible): in same layer properties window, switch to "Rule based" (created colored classes will be preserved); "+" button ("Add rule"), "Edit rule" window will open; switch to "Else" and set symbol (e. g. grey color without stroke)
+8. Set background color: Project -> Properties; General; Background color
+9. Generate map tiles pyramid: QTiles plugin has to be installed; Plugins -> QTiles -> QTiles; Directory: <path>; Extent: Full extent (with this choice only tiles which contain objects from layer will be generated; I'd expect this to happen with "Layer extent", but it generated some nonsense for me)
+10. Create interactive "slippy" map page: see https://leafletjs.com/
