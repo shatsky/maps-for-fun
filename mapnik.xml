@@ -1,0 +1,17 @@
+<Map background-color="black" srs="+init=epsg:3857">
+  <Style name="MyStyle">
+    <Rule>
+      <Filter>[building] != null &amp;&amp; [color] != null</Filter> 
+      <PolygonSymbolizer fill="[color]"/>
+    </Rule>
+  </Style>
+  <Layer srs="+init=epsg:3857">
+    <StyleName>MyStyle</StyleName>
+    <Datasource>
+      <Parameter name="host">/home/eugene/Projects/historymap/maps-for-fun</Parameter>
+      <Parameter name="dbname">mydb</Parameter>
+      <Parameter name="type">postgis</Parameter>
+      <Parameter name="table">planet_osm_polygon</Parameter>
+    </Datasource>
+  </Layer>
+</Map>
