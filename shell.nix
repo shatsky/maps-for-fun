@@ -8,5 +8,5 @@
   pkgs.mkShell {
     # nativeBuildInputs is usually what you want -- tools you need to run
     #nativeBuildInputs = [ pkgs.postgis pkgs.postgresql ];
-    nativeBuildInputs = [ (pkgs.postgresql.withPackages (pkgs: [ pkgs.postgis ])) pkgs.osm2pgsql pkgs.python3Packages.python-mapnik pkgs.python3Packages.psycopg2 ];
+    nativeBuildInputs = [ (pkgs.postgresql.withPackages (pkgs: [ pkgs.postgis ])) pkgs.osm2pgsql pkgs.python3Packages.python-mapnik pkgs.python3Packages.psycopg2 pkgs.python3Packages.requests pkgs.python3Packages.beautifulsoup4 ];
 }

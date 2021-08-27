@@ -50,9 +50,15 @@ def polylabel(polygon, precision, debug=True):
     cellQueue = Queue();
 
     # cover polygon with initial cells
-    for x in range(minX, maxX, cellSize):
-        for y in range(minY, maxY, cellSize):
+    #for x in range(minX, maxX, cellSize):
+    x = minX
+    while x<maxX:
+        #for y in range(minY, maxY, cellSize):
+        y = minY
+        while y<maxY:
             cellQueue.push(Cell(x + h, y + h, h, polygon));
+            y += cellSize
+        x += cellSize
 
     # take centroid as the first best guess
     bestCell = getCentroidCell(polygon);
